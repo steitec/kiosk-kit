@@ -1,0 +1,10 @@
+#!/bin/sh
+# Runs after every dpkg run (apt hook). If the Chromium binary is newer than the
+# running kiosk browser, stop it; the launcher starts the new version 5 s later.
+# A Chromium that keeps running across its own update tends to end in "Aw, Snap!".
+# shellcheck source-path=SCRIPTDIR/.. source=kiosk.conf
+. /etc/kiosk-kit/kiosk.conf
+pid=$(pgrep -o -u "$KIOSK_USER" -x chromium) || exit 0
+[ /usr/lib/chromium/chromium -nt "/proc/$pid" ] || exit 0
+logger -t kiosk-chromium-restart "Chromium updated, restarting the kiosk browser"
+pkill -u "$KIOSK_USER" -x chromium
