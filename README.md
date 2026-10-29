@@ -1,3 +1,8 @@
+<a href="https://steitec.net"><picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/steitec/.github/main/brand/steitec-logo-on-dark.svg">
+  <img align="right" height="32" alt="steitec" src="https://raw.githubusercontent.com/steitec/.github/main/brand/steitec-logo-on-light.svg">
+</picture></a>
+
 # kiosk-kit
 
 Turn a Debian machine with GNOME into a touch kiosk that shows one web page —
